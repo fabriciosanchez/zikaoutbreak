@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MailApp">
+  <Id>053b74c4-f3d2-4d1d-a858-2ff0dd73e704</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>[Provider name]</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="&lt;- Zika Outbreack -&gt;" />
+  <Description DefaultValue="Helps you detect if your destination is a save destination for zika virus, or others possíble others outbreacks "/>
+  <IconUrl DefaultValue="~remoteAppUrl/Images/aedes aegypti.jpg" />
+  <AppDomains>
+    <AppDomain>http://zikaapi.azurewebsites.net</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="MailBox" MinVersion="1.1" />
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemEdit">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="~remoteAppUrl/AppCompose/Home/Home.html"/>
+      </DesktopSettings>
+    </Form>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="~remoteAppUrl/AppRead/Home/Home.html" />
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit" />
+    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Edit" />
+    <Rule xsi:type="ItemHasRegularExpressionMatch" 
+    RegExName="addressMatches"
+    RegExValue="@flytour"
+    PropertyName="SenderSMTPAddress"
+    IgnoreCase="true"
+/>
+    <Rule xsi:type="ItemHasRegularExpressionMatch" RegExName="Argoit" RegExValue="@argoit" PropertyName="SenderSMTPAddress" />
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+</OfficeApp>
